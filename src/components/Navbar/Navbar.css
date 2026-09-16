@@ -1,0 +1,145 @@
+/* Navbar */
+.navbar {
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Container */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+/* Brand */
+.navbar-brand {
+  color: #2563eb;
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.navbar-brand:hover {
+  color: #1d4ed8;
+}
+
+/* Navigation links */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-left: auto;
+  margin-right: 40px;
+}
+
+.navbar-link {
+  color: #374151;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.navbar-link:hover {
+  color: #2563eb;
+}
+
+/* Auth section */
+.navbar-auth-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 9px 18px;
+  border-radius: 7px;
+
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+/* Login button */
+.btn-secondary {
+  color: #2563eb;
+  background: #ffffff;
+  border: 1px solid #2563eb;
+}
+
+.btn-secondary:hover {
+  color: #ffffff;
+  background: #2563eb;
+}
+
+/* Signup button */
+.btn-primary {
+  color: #ffffff;
+  background: #2563eb;
+  border: 1px solid #2563eb;
+}
+
+.btn-primary:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .nav-container {
+    padding: 14px 16px;
+  }
+
+  .navbar-brand {
+    font-size: 20px;
+  }
+
+  .navbar-links {
+    gap: 15px;
+    margin-right: 15px;
+  }
+
+  .navbar-auth-links {
+    gap: 6px;
+  }
+
+  .btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 550px) {
+  .nav-container {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .navbar-links {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+    margin: 0;
+    padding-top: 8px;
+    border-top: 1px solid #f0f0f0;
+  }
+}
