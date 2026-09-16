@@ -1,57 +1,69 @@
-import  { useState } from 'react';
-import { createContext } from 'react';
- 
+import { createContext, useState } from 'react';
+
 export const AuthContext = createContext(null);
 
-function AuthProvider( {children}) {
+export default function Authprovider({ children }) {
+  const [user, setUser] = useState(
+        localStorage.getItem('users') 
+        ? {email: localStorage.getItem('currentUserEmail')} : "[]");
 
-    const [user, setUser] = useState(
-      localStorage.getItem("currentUserEmail") 
-      ? {email: localStorage.getItem("currentUserEmail")} 
-      : null);
+  function SignUp(email, password) {
+    console.log("SignUp function called with:", email, password); 
 
-    function signUp(email, password){
-        const users = JSON.parse(localStorage.getItem("users") || "[]");
-        console.log(users);
-        if (users.find((user) => user.email === email)) {
-          return {success: false, message: "User already exists"};
-        }
+    try {
+      
+      const existingUsers = JSON.parse(localStorage.getItem('users') || "[]");
 
-        const newUser = {email, password};
-        users.push(newUser);
-        localStorage.setItem("users", JSON.stringify(users))
-        console.log(users);
-        localStorage.setItem("currentUserEmail", email);
-        setUser({email});
+      if(existingUsers.find(user => user.email === email)) {
 
-        return {success: true, message: "User created successfully"};
+        return { Success: false, error: "User already exists" };
+      }
+      
+      const newUser = { email, password };
+      existingUsers.push(newUser);
+
+      localStorage.setItem('users', JSON.stringify(existingUsers));
+      localStorage.setItem('currentUserEmail', email);
+
+      setUser({ email });
+
+      return { Success: true, error: "User registered successfully" };  
+    
+    } catch (error) {
+      console.error("LocalStorage error:", error);
+    }
+  }
+
+  function Login(email, password) {
+  try {
+    const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+    const foundUser = existingUsers.find(u => u.email === email && u.password === password);
+    
+    if (!foundUser) {
+      
+      return { Success: false, error: "Invalid email or password!" }; 
     }
 
-     function login(email, password){
-
-      const users = JSON.parse(localStorage.getItem("users") || []);
-
-      const user = users.find(
-        (user) => user.email === email && user.password === password);
-
-        if (!user) {
-          return {success: false, message: "Invalid email or password"};
-        }
-        
-        localStorage.setItem("currentUserEmail", email);
-        setUser({email});
-
-        return {success: true, message: "User created successfully"};
-    }
-
-    function logout(){
-      localStorage.removeItem("currentUserEmail");
-      setUser(null);
-    }
-
-  return (
-    <AuthContext.Provider value={{signUp, user, logout, login}}>{children}</AuthContext.Provider>
-  )
+    localStorage.setItem('currentUserEmail', email);
+    setUser({ email });
+    
+    return { Success: true }; 
+  } catch (error) {
+    return { Success: false, error: "Something went wrong." };
+  }
 }
 
-export default AuthProvider
+  
+
+
+  function Logout() {
+    localStorage.removeItem('currentUserEmail');
+    setUser(null);
+  }
+
+  return (
+    <AuthContext.Provider value={{ SignUp, user, Login, Logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}

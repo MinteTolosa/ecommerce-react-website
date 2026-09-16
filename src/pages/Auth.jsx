@@ -1,35 +1,52 @@
-import  { useState, useContext } from 'react'
+import  { useState, useContext } from 'react';   
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import './Auth.css';
 
 function Auth() {
 
   const [mode, setMode] = useState("signup");
-  const {signUp, user, logout, login} = useContext(AuthContext);
+  const [error, setError] = useState(null);
+  const {SignUp, user, Login, Logout} = useContext(AuthContext);
   const {
     register, 
     handleSubmit, 
     formState: {errors},
   } = useForm();
+  
+  const navigate = useNavigate();
 
-  function onSubmit(data){
-    if (mode === "signup") {
-      signUp(data.email, data.password);
-    } else {
-      login(data.email, data.password);
-    }
+ function onSubmit(data) {
+  setError(null); 
+  let result;
+
+  if (mode === "signup") {
+    result = SignUp(data.email, data.password);
+  } else {
+    result = Login(data.email, data.password);
   }
+
+  if (result && result.Success) {
+    navigate("/");
+  } else if (result && result.error) {
+    setError(result.error); 
+  } else {
+    setError("An unexpected error occurred.");
+  }
+}
 
   return (
     <div className='page'>
       <div className='page-container'>
         <div className='auth-container'>
+          {/* {user && <p className='auth-success'> User {user.email} is logged in</p>}
+          {user && <button className='btn btn-secondary' onClick={Logout}>Logout</button>} */}
           <h1 className='page-title'> 
             {mode === "signup" ? "Sign Up" : "Login"} </h1>
           
           <form className='auth-form' onSubmit={handleSubmit(onSubmit)}>
-
+            {error && <div className='auth-error-banner' style={{color:'#dc2626'}}>{error}</div>} 
             <div className='form-group'>
               <label className='form-label' htmlFor='email'>
                 Email
@@ -75,5 +92,6 @@ function Auth() {
     </div>
   )
 }
+
 
 export default Auth;
