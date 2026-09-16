@@ -1,11 +1,9 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContext';
 import './Navbar.css';
 function NavBar() {
 
-    const {user, Logout} = useContext(AuthContext);
+    const {user, Logout} = useAuth();
   return (
     <nav className='navbar'>
         <div className='nav-container'>

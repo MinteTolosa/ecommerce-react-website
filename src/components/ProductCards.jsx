@@ -13,7 +13,7 @@ function ProductCards({product}) {
             <h3 className='product-card-name'>{product.name}</h3>
             <p className='product-card-price'>{product.price} ETB</p>
             <div className='product-card-action'>
-                <Link to={`/product/${product.id}`} className='btn btn-secondary'>
+                <Link className='btn btn-secondary' to={`/products/${product.id}`}>
                      View Detail
                 </Link>
 
