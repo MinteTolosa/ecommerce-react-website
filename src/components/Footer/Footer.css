@@ -1,0 +1,60 @@
+/* =========================
+   Footer Styling
+========================= */
+
+.shop-footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  padding: 24px 20px;
+  font-family: 'Inter', sans-serif;
+  color: #64748b;
+  margin-top: auto; /* Pushes footer to bottom if page content is short */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    gap: 0;
+  }
+}
+
+.footer-copyright {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.footer-contact {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.footer-link {
+  color: #1d4ed8;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+.footer-divider {
+  color: #cbd5e1;
+  margin: 0 4px;
+}

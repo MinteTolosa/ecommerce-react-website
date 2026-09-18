@@ -7,6 +7,7 @@ import NavBar from "./components/Navbar/Navbar";
 import AuthProvider from "./context/AuthContext";
 import ProductDetail from "./pages/ProductDetail";
 import './App.css';
+import Footer from "./components/Footer/Footer";
 
 
 
@@ -23,7 +24,10 @@ function App() {
         <Route path="/auth" element ={<Auth /> }/>
         <Route path="/checkout" element ={<Checkout />} />
         <Route path="/products/:id" element ={<ProductDetail />} />
+        <Route path="*" element={<h1>404 Not Found</h1>} />
+
       </Routes>
+      <Footer />
     </div>
     </Cartprovider>
     </AuthProvider>
