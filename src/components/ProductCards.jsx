@@ -1,9 +1,15 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
 import './ProductCards.css';
+import { useCart } from '../context/CartContext';
 
 
 function ProductCards({product}) {
+    const {addToCart, cartItems} = useCart();
+    const productInCart = cartItems.find((item) => item.id === product.id );
+
+    const productQuantityLabel = productInCart 
+        ? `(${productInCart.quantity})`
+        : "";
   return (
 
     <div>
@@ -17,8 +23,9 @@ function ProductCards({product}) {
                      View Detail
                 </Link>
 
-                <button className='btn btn-primary'>
-                    Add to Cart
+                <button className='btn btn-primary'
+                    onClick={() => addToCart(product.id)}>
+                    Add to Cart {productQuantityLabel}
                 </button>
 
             </div>

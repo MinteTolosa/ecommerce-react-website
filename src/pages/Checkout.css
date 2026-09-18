@@ -1,0 +1,380 @@
+/* =========================
+   Checkout Page
+========================= */
+
+.pages {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding: 40px 20px;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  color: #1e293b;
+}
+
+/* FIXED TYPO: changed .conatainers to match your JSX 'containers' */
+.containers {
+  width: 100%;
+  max-width: 1200px; /* Bumped slightly for side-by-side room */
+  margin: 0 auto;
+}
+
+/* =========================
+   Page Title
+========================= */
+
+.page-title {
+  margin: 0 0 32px;
+  color: #1d4ed8;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: left; /* Aligned left to flow naturally with layout */
+  letter-spacing: -0.5px;
+}
+
+/* =========================
+   Checkout Layout Structure
+========================= */
+
+/* FIXED TYPO: changed .checkout-conatainer to match your JSX 'checkout-container' */
+/* ADDED: Side-by-side split for wider displays */
+.checkout-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+@media (min-width: 992px) {
+  .checkout-container {
+    flex-direction: row;
+  }
+}
+
+/* Left main panel: Checkout list items container */
+.checkout-items {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  flex: 1; /* Lets list container scale and expand */
+}
+
+/* Right side panel: Summary Box Sidebar */
+.checkout-summary {
+  width: 100%;
+  padding: 26px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+
+@media (min-width: 992px) {
+  .checkout-summary {
+    width: 380px; /* Lock side panel width on desktop */
+    position: sticky;
+    top: 40px; /* Floats beautifully in viewport as you scroll */
+    margin-top: 44px; /* Lines up visually with item lists */
+  }
+}
+
+/* =========================
+   Section Titles
+========================= */
+
+.checkout-sec-title {
+  margin: 0;
+  color: #1e293b;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.checkout-summary .checkout-sec-title {
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* =========================
+   Individual Cart Item
+========================= */
+
+.checkout-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.checkout-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+/* =========================
+   Product Image
+========================= */
+
+.checkout-item-image {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  flex-shrink: 0;
+}
+
+/* =========================
+   Product Details
+========================= */
+
+.checkout-item-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.checkout-item-name {
+  margin: 0 0 8px;
+  color: #0f172a;
+  font-size: 1.1rem;
+  font-weight: 650;
+}
+
+.checkout-item-price {
+  margin: 0 0 16px;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+/* =========================
+   Item Controls
+========================= */
+
+.checkout-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  background: #eff6ff;
+}
+
+.quantity-btn {
+  width: 36px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  color: #1d4ed8;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.quantity-btn:hover {
+  background: #3b82f6;
+  color: #ffffff;
+}
+
+.quantity-btn:active {
+  transform: scale(0.95);
+}
+
+.quantity-value {
+  min-width: 38px;
+  text-align: center;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* =========================
+   Item Total
+========================= */
+
+.checkout-item-total {
+  margin: 0;
+  color: #1d4ed8;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* =========================
+   Buttons
+========================= */
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Remove button */
+
+.btn-smallsecondary {
+  padding: 8px 14px;
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 0.85rem;
+}
+
+.btn-smallsecondary:hover {
+  background: #fecaca;
+  color: #b91c1c;
+}
+
+/* Primary button */
+
+.btn-primary {
+  background: #1d4ed8;
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(29, 78, 216, 0.25);
+}
+
+.btn-primary:hover {
+  background: #1e40af;
+  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.3);
+}
+
+.btn-large {
+  padding: 14px 24px;
+  font-size: 1rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.checkout-summary .btn-block {
+  margin-top: 20px;
+}
+
+/* =========================
+   Total Rows
+========================= */
+
+.checkout-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.checkout-total-label {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.checkout-total-value {
+  margin: 0;
+  color: #334155;
+  font-weight: 600;
+}
+
+.checkout-total-final {
+  color: #1d4ed8;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+/* =========================
+   Responsive Design Updates
+========================= */
+
+@media (max-width: 768px) {
+  /* FIXED: Targeted .pages instead of non-existent layout hooks */
+  .pages {
+    padding: 25px 15px;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .checkout-item {
+    align-items: flex-start;
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .checkout-item-image {
+    width: 85px;
+    height: 85px;
+  }
+
+  .checkout-item-controls {
+    gap: 12px;
+  }
+
+  .checkout-item-total {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .pages {
+    padding: 20px 12px;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .checkout-item {
+    flex-direction: column;
+  }
+
+  .checkout-item-image {
+    width: 100%;
+    height: 180px;
+  }
+
+  .checkout-item-details {
+    width: 100%;
+  }
+
+  .checkout-item-controls {
+    align-items: center;
+  }
+
+  .btn-smallsecondary {
+    margin-left: auto;
+  }
+
+  .checkout-summary {
+    padding: 20px;
+  }
+}

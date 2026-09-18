@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
+import Cartprovider from "./context/CartContext";
 import Checkout from "./pages/Checkout";
 import NavBar from "./components/Navbar/Navbar";
 import AuthProvider from "./context/AuthContext";
@@ -8,10 +9,13 @@ import ProductDetail from "./pages/ProductDetail";
 import './App.css';
 
 
+
 function App() {
 
   return (
     <AuthProvider>
+      <Cartprovider>
+      
     <div className="App">
       <NavBar />
       <Routes>
@@ -21,6 +25,7 @@ function App() {
         <Route path="/products/:id" element ={<ProductDetail />} />
       </Routes>
     </div>
+    </Cartprovider>
     </AuthProvider>
   )
 }
