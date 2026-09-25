@@ -1,0 +1,303 @@
+/* ==========================================
+   Home Page Layout Styles
+   ========================================== */
+
+.pages {
+  background-color: var(--bg-white);
+}
+
+.home-section {
+  padding: 3.5rem 0;
+}
+
+/* Section Headings */
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #f1f5f9;
+  padding-bottom: 0.75rem;
+}
+
+.section-heading h2 {
+  font-size: 1.5rem;
+  color: var(--text-main);
+  font-weight: 700;
+  margin: 0;
+}
+
+.section-heading p {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================
+   1. Hero Banner Component
+   ========================================== */
+.home-hero {
+  background: #e2eaf4; /* Soft blue layout color from blueprint */
+  padding: 4.5rem 0;
+  border-radius: 12px;
+  margin: 1.5rem auto;
+  max-width: calc(var(--max-width) - 3rem);
+}
+
+.home-hero-content {
+  max-width: 500px;
+}
+
+.hero-label {
+  color: var(--text-main);
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.home-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.2;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.01em;
+}
+
+.home-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 1.75rem;
+}
+
+.hero-button {
+  padding: 0.75rem 2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+/* ==========================================
+   2. Popular Category Circular Grid
+   ========================================== */
+.category-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-main);
+  transition: var(--transition);
+  flex: 1;
+  min-width: 100px;
+}
+
+.category-card img {
+  width: 85px;
+  height: 85px;
+  object-fit: contain;
+  background-color: #f1f5f9;
+  border-radius: 50%; /* Perfect circular icon styling */
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  box-sizing: border-box;
+  transition: var(--transition);
+}
+
+.category-card:hover img {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  background-color: #e2e8f0;
+}
+
+.category-card h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0;
+  text-align: center;
+}
+
+/* Product Grid Base */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ==========================================
+   3. Promotions Cards Grid
+   ========================================== */
+.promotion-section {
+  padding: 2rem 0;
+}
+
+.promotion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.promotion-card {
+  padding: 2.5rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Matching the explicit background splits from target image */
+.promotion-card:nth-child(1) {
+  background-color: #d1fae5; /* Soft Green tint */
+  color: #065f46;
+}
+.promotion-card:nth-child(2) {
+  background-color: #ffedd5; /* Soft Orange tint */
+  color: #9a3412;
+}
+
+.promotion-card p {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.promotion-card h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin: 0 0 1rem 0;
+  color: inherit;
+}
+
+.promotion-card span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 0.5rem 1.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.promotion-card span:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+/* ==========================================
+   4. Blue Banner Newsletter Section
+   ========================================== */
+.newsletter-section {
+  background-color: #e2eaf4;
+  padding: 2rem 0;
+  margin: 2rem 0;
+}
+
+.newsletter-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.newsletter-content h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+}
+
+.newsletter-content p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  flex-grow: 1;
+  max-width: 450px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-white);
+  font-size: 0.9rem;
+}
+
+.newsletter-form .btn {
+  padding: 0 1.5rem;
+  background-color: var(--primary-color);
+  color: var(--bg-white);
+}
+
+/* ==========================================
+   5. Dark Footer Component
+   ========================================== */
+.home-footer {
+  background-color: #1e293b;
+  color: #94a3b8;
+  padding: 3.5rem 0 1.5rem 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.footer-grid h3 {
+  color: var(--bg-white);
+  font-size: 1.35rem;
+  margin: 0 0 0.75rem 0;
+}
+
+.footer-grid h4 {
+  color: var(--bg-white);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.footer-grid div {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-grid a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 0.65rem;
+  transition: var(--transition);
+}
+
+.footer-grid a:hover {
+  color: var(--bg-white);
+}
+
+.footer-bottom {
+  border-top: 1px solid #334155;
+  padding-top: 1.5rem;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+/* Responsiveness overrides */
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .promotion-grid { grid-template-columns: 1fr; }
+  .home-title { font-size: 2.2rem; }
+}
