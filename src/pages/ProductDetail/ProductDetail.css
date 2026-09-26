@@ -1,0 +1,67 @@
+/* ==========================================
+   Product Card Component Styles
+   ========================================== */
+
+.product-card {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  position: relative;
+}
+
+.product-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+  border-color: #cbd5e1;
+}
+
+.product-card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background-color: #fafafa;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.product-card-content {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-card-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-main);
+  margin: 0 0 0.35rem 0;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-card-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 1.25rem 0;
+}
+
+.product-card-action {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 0.5rem;
+}
+
+.product-card-action .btn {
+  padding: 0.55rem 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}

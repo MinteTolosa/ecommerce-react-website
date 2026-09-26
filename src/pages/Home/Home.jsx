@@ -8,22 +8,25 @@ const API = 'https://dummyjson.com/products?limit=0';
 const categories = [
   {
     name: 'Phones',
+    value: 'smartphones',
     image: 'https://cdn.dummyjson.com/product-images/smartphones/iphone-13/1.webp'
   },
   {
     name: 'Laptops',
+    value: 'laptops',
     image: 'https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/1.webp'
   },
   {
     name: 'Audio',
+    value: 'mobile-accessories',
     image: 'https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods-pro/1.webp'
   },
   {
     name: 'Tablets',
+    value: 'tablets',
     image: 'https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-s8/1.webp'
   }
 ];
-
 function Home() {
   // const products = getProducts();
   const [products, setProducts] = useState([]);
@@ -80,7 +83,7 @@ function Home() {
         <div className='container home-hero-content'>
           <div>
             <p className='hero-label'>NEW ARRIVALS</p>
-            <h1 className='home-title'>Technology for everyday life</h1>
+            <h1 className='home-title'>WelCome to Addis Shop</h1>
             <p className='home-subtitle'>
               Discover amazing product at greate price.
             </p>
@@ -100,7 +103,7 @@ function Home() {
 
           <div className='category-grid'>
             {categories.map((category) => (
-              <Link to={`/?category=${category.name}`} className='category-card' key={category.name}>
+              <Link to={`/?category=${category.value}`} className='category-card' key={category.value}>
                 <img src={category.image} alt={category.name} />
                 <h3>{category.name}</h3>
               </Link>
