@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import ProductCards from '../../components/ProductCards/ProductCards';
 import './Home.css';
 
-const API = 'https://dummyjson.com/products?limit=0';
+const API = 'https://dummyjson.com/products';
 const categories = [
   {
     name: 'Phones',
@@ -35,34 +35,59 @@ function Home() {
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category');
   const search = searchParams.get('search');
+  const [skip, setSkip] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+  const limit = 12;
 
   useEffect(() => {
-  fetch(API)
-    .then((response) => { if (!response.ok) {
+  let url = `${API}?limit=${limit}&skip=${skip}`;
+
+  if (category) {
+    url = `${API}/category/${category}?limit=${limit}&skip=${skip}`;
+  } else if (search) {
+    url = `${API}/search?q=${search}&limit=${limit}&skip=${skip}`;
+  }
+
+  setLoading(true);
+
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
         throw new Error('Failed to fetch products');
       }
-      return response.json(); })
-    .then((data) => { 
-      console.log(data);
-      setProducts(data.products);
-      setLoading(false); })
+      return response.json();
+    })
+    .then((data) => {
+      if (skip === 0) {
+        setProducts(data.products);
+      } else {
+        setProducts((currentProducts) => [
+          ...currentProducts, ...data.products ]);
+      }
+      setHasMore(skip + data.products.length < data.total);
+      setLoading(false);
+    })
     .catch((error) => { console.error(error);
       setError('Unable to load products.');
       setLoading(false);
     });
-  }, []);
+}, [category, search, skip]);
+
+useEffect(() => {
+  setSkip(0);
+}, [category, search]);
 
   // const filteredProducts = products.filter((product) => {
   // const matchesCategory = !category || product.category === category;
   // const matchesSearch = !search || product.name.toLowerCase().includes(search.toLowerCase());
   //   return matchesCategory && matchesSearch;
   // });
-  const filteredProducts = products.filter((product) => {
-  const matchesCategory = !category || product.category === category;
-  const matchesSearch =
-    !search || product.title.toLowerCase().includes(search.toLowerCase());
-  return matchesCategory && matchesSearch;
-});
+//   const filteredProducts = products.filter((product) => {
+//   const matchesCategory = !category || product.category === category;
+//   const matchesSearch =
+//     !search || product.title.toLowerCase().includes(search.toLowerCase());
+//   return matchesCategory && matchesSearch;
+// });
 
   const pageTitle = category 
     ? `${category} Products` 
@@ -81,12 +106,11 @@ function Home() {
     <div className='pages'>
       <section className='home-hero'>
         <div className='container home-hero-content'>
-          <div>
-            <p className='hero-label'>NEW ARRIVALS</p>
-            <h1 className='home-title'>WelCome to Addis Shop</h1>
-            <p className='home-subtitle'>
-              Discover amazing product at greate price.
-            </p>
+        <div>
+          <p className='hero-label'>NEW ARRIVALS</p>
+          <h1 className='home-title'>WelCome to Addis Shop</h1>
+          <p className='home-subtitle'>
+              Discover amazing product at greate price. </p>
             <a href='#featured-products' className='btn btn-primary hero-button'>
               Shop Now
             </a>
@@ -101,49 +125,56 @@ function Home() {
             <p>Shop by category</p>
           </div>
 
-          <div className='category-grid'>
-            {categories.map((category) => (
-              <Link to={`/?category=${category.value}`} className='category-card' key={category.value}>
-                <img src={category.image} alt={category.name} />
-                <h3>{category.name}</h3>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+   <div className='category-grid'>
+    {categories.map((category) => (
+    <Link to={`/?category=${category.value}`} className='category-card' key={category.value}>
+      <img src={category.thumbnail} alt={category.value} />
+      <h3>{category.value}</h3>
+    </Link>
+  ))}
+  </div>
+  </div>
+  </section>
 
-      <section className='home-section' id='featured-products'>
-        <div className='container'>
-          <div className='section-heading'>
-            <h2>{pageTitle}</h2>
-            <p>{filteredProducts.length} product(s) found</p>
-          </div>
+  <section className='home-section' id='featured-products'>
+  <div className='container'>
+     <div className='section-heading'>
+     <h2>{pageTitle}</h2>
+    <p>{products.length} product(s) found</p>
+  </div>
 
-          <div className='product-grid'>
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((product) => (
-                <ProductCards product={product} key={product.id} />
-              ))
-            ) : (
-              <p>No products found.</p>
-            )}
-          </div>
-        </div>
-      </section>
+   <div className='product-grid'>
+     {products.length > 0
+     ? products.map((product) => (
+       <ProductCards product={product} key={product.id} /> ))
+     : <p>No products found.</p>}
+   </div>
+  </div>
+  { hasMore && (
+  <div className='load-more-container'>
+    <button className='btn btn-primary'
+      onClick={() => setSkip((currentSkip) => currentSkip + limit)}
+      disabled={loading}
+    >
+      {loading ? 'Loading...' : 'Load More'}
+    </button>
+  </div>
+)}
+ </section>
 
-      <section className='promotion-section'>
-        <div className='container promotion-grid'>
-          <div className='promotion-card'>
-            <p>LIMITED OFFER</p>
-            <h2>Upgrade your setup</h2>
-            <span>Save more on selected technology products.</span>
-          </div>
-          <div className='promotion-card'>
-            <p>WEEKEND DEAL</p>
-            <h2>Audio & accessories</h2>
-            <span>Find everyday essentials for your devices.</span>
-          </div>
-        </div>
+   <section className='promotion-section'>
+   <div className='container promotion-grid'>
+    <div className='promotion-card'>
+      <p>LIMITED OFFER</p>
+      <h2>Upgrade your setup</h2>
+      <span>Save more on selected technology products.</span>
+    </div>
+    <div className='promotion-card'>
+      <p>WEEKEND DEAL</p>
+      <h2>Audio & accessories</h2>
+      <span>Find everyday essentials for your devices.</span>
+    </div>
+    </div>
       </section>
 
       <section className='newsletter-section'>
@@ -167,7 +198,7 @@ function Home() {
           </div>
           <div>
             <h4>Quick Links</h4>
-            <Link to='/'>Home</Link>
+            <Link to='/'>All Category</Link>
             <Link to='/checkout'>Cart</Link>
             <Link to='/auth'>Account</Link>
           </div>

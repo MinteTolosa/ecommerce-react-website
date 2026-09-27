@@ -1,0 +1,125 @@
+/* ==========================================
+   Authentication Screen Layout Styles
+   ========================================== */
+
+.page {
+  background-color: var(--bg-light);
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+.auth-container {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.03);
+}
+
+.auth-container .page-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-main);
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 2rem;
+}
+
+/* Form Structural Inputs */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--bg-light);
+  box-sizing: border-box;
+  transition: var(--transition);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: var(--bg-white);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+/* Error Framework Blocks */
+.auth-error-banner {
+  background-color: #fef2f2;
+  border: 1px solid #fee2e2;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.form-errors {
+  color: #dc2626;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 0.15rem;
+}
+
+/* Authentication Mode Toggle Links */
+.auth-swith {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.auth-swith p {
+  margin: 0;
+}
+
+.auth-link {
+  color: var(--primary-color);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 0.25rem;
+  transition: var(--transition);
+}
+
+.auth-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* Button override to perfectly match inner form parameters */
+.auth-form .btn-large {
+  width: 100%;
+  padding: 0.85rem 1.5rem;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}

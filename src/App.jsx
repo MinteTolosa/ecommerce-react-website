@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Auth from "./pages/Auth";
+import Home from "./pages/Home/Home";
+import Auth from "./pages/Auth/Auth";
 import Cartprovider from "./context/CartContext";
-import Checkout from "./pages/Checkout";
+import Checkout from "./pages/Checkout/Checkout";
 import NavBar from "./components/Navbar/Navbar";
 import AuthProvider from "./context/AuthContext";
-import ProductDetail from "./pages/ProductDetail";
+import ProductDetail from "./pages/ProductDetail/ProductDetail";
 import './App.css';
-import Footer from "./components/Footer/Footer";
+
 
 
 
@@ -27,7 +27,6 @@ function App() {
         <Route path="*" element={<h1>404 Not Found</h1>} />
 
       </Routes>
-      <Footer />
     </div>
     </Cartprovider>
     </AuthProvider>

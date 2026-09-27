@@ -1,0 +1,78 @@
+/* ==========================================
+   Overlay Modal System Canvas Styles
+   ========================================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(15, 23, 42, 0.4); /* Smooth dim background overlay */
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeInOverlay 0.2s ease-out;
+}
+
+.modal-container {
+  background-color: var(--bg-white);
+  padding: 2.5rem 2rem 2rem 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 440px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  position: relative;
+  box-sizing: border-box;
+  animation: slideInModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Close Absolute Action Button Trigger */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.25rem;
+  transition: var(--transition);
+}
+
+.modal-close:hover {
+  color: var(--text-main);
+  transform: scale(1.05);
+}
+
+/* Internal Layout Typography Defaults within Modal context wrapper */
+.modal-container h2 {
+  margin-top: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+}
+
+.modal-container p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* CSS Animations for premium user feedback transition */
+@keyframes fadeInOverlay {
+  from { background-color: rgba(15, 23, 42, 0); backdrop-filter: blur(0px); }
+  to { background-color: rgba(15, 23, 42, 0.4); backdrop-filter: blur(4px); }
+}
+
+@keyframes slideInModal {
+  from { transform: translateY(15px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
