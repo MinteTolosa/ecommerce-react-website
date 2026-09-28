@@ -95,15 +95,15 @@ function NavBar() {
             <User size={22} />
               Account
             </button>
-            <button className='nav-action icon-button' onClick={() => setModalType('wishlist')}>
-            <Heart size={22} />
-            <span>Wishlist</span>
-            {wishlistItems.length > 0 && (
+            <Link to="/wishlist" className="nav-action">
+              <Heart size={22} />
+              <span>Wishlist</span>
+               {wishlistItems.length > 0 && (
               <span className='item-count'>
                 {wishlistItems.length}
               </span>
             )}
-            </button>
+            </Link>
             <Link to='/checkout' className='nav-action icon-button'>
             <ShoppingCart size={22} />
             <span>Cart</span>
