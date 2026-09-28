@@ -6,6 +6,7 @@ import Checkout from "./pages/Checkout/Checkout";
 import NavBar from "./components/Navbar/Navbar";
 import AuthProvider from "./context/AuthContext";
 import ProductDetail from "./pages/ProductDetail/ProductDetail";
+import Wishlist from './pages/Wishlist/Wishlist';
 import './App.css';
 
 
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/auth" element ={<Auth /> }/>
+        <Route path="/Wishlist" element={<Wishlist />}/>
         <Route path="/checkout" element ={<Checkout />} />
         <Route path="/products/:id" element ={<ProductDetail />} />
         <Route path="*" element={<h1>404 Not Found</h1>} />

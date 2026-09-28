@@ -1,12 +1,14 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware'
 // import { getProductById } from '../data/product';
 
 // Day 19: Zustand - Cart Store
 
-const useCartStore = create((set, get) => ({
+const useCartStore = create( persist((set, get) => ({
   cartItems: [],
 
   addToCart: (productId) => {
+
     const cartItems = get().cartItems;
     const existing = cartItems.find((item) => item.id === productId);
 
@@ -62,9 +64,12 @@ const useCartStore = create((set, get) => ({
     return get().cartItems.reduce((total, item) => total + item.quantity, 0);
   },
 
-  clearCart: () => {
-    set({ cartItems: [] });
-  }
-}));
+  clearCart: () => { set({ cartItems: [] }); }
+}),
+    {
+      name: 'addis-shop-cart'
+    }
+  )
+);
 
 export default useCartStore;

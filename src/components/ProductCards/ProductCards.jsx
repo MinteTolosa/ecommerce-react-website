@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
 import './ProductCards.css';
-import { useCart } from '../../context/CartContext';
+// import { useCart } from '../../context/CartContext';
+import useCartStore from '../../store/cartStore';
 import useWishlistStore from '../../store/wishlistStore';
 
 function ProductCards({ product }) {
-    const { addToCart, cartItems } = useCart();
+    // const { addToCart, cartItems } = useCart();
+    const addToCart = useCartStore((state) => state.addToCart);
+    const cartItems = useCartStore((state) => state.cartItems);
     const productInCart = cartItems.find((item) => item.id === product.id);
     const isInWishlist = useWishlistStore((state) => state.wishlistItems.includes(product.id));
     const toggleWishlist = useWishlistStore((state) => state.toggleWishlist);
