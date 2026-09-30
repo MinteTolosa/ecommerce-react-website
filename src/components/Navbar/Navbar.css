@@ -118,11 +118,11 @@
   justify-content: flex-start;
   gap: 2rem;
   overflow-x: auto;
-  scrollbar-width: none; /* Hides horizontal track bar on Firefox */
+  scrollbar-width: none; 
 }
 
 .category-links::-webkit-scrollbar {
-  display: none; /* Hides horizontal track bar on Chrome/Safari */
+  display: none; 
 }
 
 .category-links a {

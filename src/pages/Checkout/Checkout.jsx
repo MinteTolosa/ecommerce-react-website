@@ -117,8 +117,8 @@ function Checkout() {
       return;
     }
     if (code === 'MINTE40') {
-      setDiscount(5);
-      setCouponMessage('Coupon applied. You saved 150 ETB.');
+      setDiscount(50);
+      setCouponMessage('Coupon applied. You saved 50 ETB.');
     } else {
       setDiscount(0);
       setCouponMessage('Invalid coupon code.');

@@ -1,5 +1,3 @@
-
-
 .wishlist-page {
   width: 100%;
   max-width: var(--max-width);
@@ -163,13 +161,16 @@
   .wishlist-page {
     padding: 1.5rem 1rem 3rem;
   }
+
   .wishlist-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
+
   .wishlist-image {
     height: 200px;
   }
+
   .wishlist-header h1 {
     font-size: 1.6rem;
   }
@@ -180,11 +181,11 @@
   .wishlist-grid {
     grid-template-columns: 1fr;
   }
+
   .wishlist-image {
     height: 240px;
   }
+
   .wishlist-header {
     margin-bottom: 1.5rem;
-  }
-  .wishlist-header h1
-
+  }}
